@@ -2,8 +2,9 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useTasks } from "@/context/TaskContext";
-import { set, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
+import styles from './new.module.css';
 
 
 const Page = ({params}) => {
@@ -37,21 +38,35 @@ const Page = ({params}) => {
   
   
   return (
-    <form onSubmit={onSubmit}>
-      <input
-        type="text"
-        placeholder="Write a title"
-        { ...register("title", {required: true}) }
-      />
-      {errors.title && <span>This field is required</span>}
+    <form
+      className={styles.form}
+      onSubmit={onSubmit}
+    >
+      <div className={styles.field}>
+        <input
+          className={styles.input}
+          type="text"
+          placeholder="Write a title"
+          { ...register("title", {required: true}) }
+          />
+        {errors.title && <span className={styles.input_span}>This field is required</span>}
+      </div>
 
-      <textarea
-        placeholder="Write a description"
-        { ...register("description", {required: true})}
-      />
-      {errors.description && <span>This field is required</span>}
+      <div className={styles.field}>
+        <textarea
+          className={styles.textarea}
+          placeholder="Write a description"
+          { ...register("description", {required: true})}
+          />
+        {errors.description && <span className={styles.textarea_span}>This field is required</span>}
+        {<span className={styles.span}></span>}
+      </div>
 
-      <button>Save</button>
+      <button
+        className={styles.button}
+      >
+        Save
+      </button>
     </form>
   )
 }

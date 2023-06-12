@@ -2,3 +2,54 @@
     background: #313a48;
     color: white;
 }
+
+.taskCard {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0.5rem 2rem;
+}
+
+.taskCard:first-of-type {
+    margin-top: 1rem;
+}
+
+.taskCard__info {
+    display: flex;
+    flex-direction: column;
+    margin: 0 2rem 0 1rem;
+    max-width: 350px;
+}
+@media (max-width: 600px) {
+    .taskCard__info {
+        max-width: 250px;
+    }
+}
+@media (max-width: 500px) {
+    .taskCard__info {
+        max-width: 200px;
+    }
+    .taskCard {
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 1rem;
+        text-align: center;
+    }
+}
+
+.taskCard h1 {
+    margin: 0.8rem 0;
+}
+
+.taskCard__info p {
+    margin-top: 0;
+}
+
+.taskCard__buttons {
+    margin-right: 1rem;
+}
+
+.taskCard__buttons button {
+    margin-left: 0.5rem;
+}

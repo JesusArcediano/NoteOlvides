@@ -1,0 +1,47 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.field {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.input,
+.textarea {
+    padding: 10px;
+    margin-bottom: 2rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    width: 300px;
+}
+
+.input_span {
+    position: absolute;
+    color: red;
+    font-size: 0.8rem;
+    padding-left: 0.5rem;
+    top: 2.5rem;
+}
+
+.textarea_span {
+    position: absolute;
+    color: red;
+    font-size: 0.8rem;
+    padding-left: 0.5rem;
+    top: 3.4rem
+}
+
+.button {
+    width: 200px;
+    padding: 5px 0 5px 0;
+    background-color: #25c460;
+    color: white;
+    top: 0;
+    left: 0;
+}
