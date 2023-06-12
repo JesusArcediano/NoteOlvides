@@ -1,10 +1,8 @@
 'use client'
 import { TaskProvider } from '@/context/TaskContext'
-import './globals.css'
-import { Inter } from 'next/font/google'
+import styles from '@/app/layout.module.css'
 import { Navbar } from '@/components/Navbar'
-
-const inter = Inter({ subsets: ['latin'] })
+import { Toaster } from 'react-hot-toast';
 
 export const metadata = {
   title: 'NextJS Content Crud',
@@ -14,10 +12,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>
+      <body className={styles.body}>
         <TaskProvider>
           <Navbar />
           {children}
+          <Toaster />
         </TaskProvider>
       </body>
     </html>

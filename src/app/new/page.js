@@ -2,66 +2,55 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useTasks } from "@/context/TaskContext";
+import { set, useForm } from "react-hook-form";
+import { toast } from "react-hot-toast";
 
 
 const Page = ({params}) => {
 
-  const initialState = {
-    title: '',
-    description: ''
-  }
-
-  const [task, setTask] = useState(initialState);
-
   const {tasks, createTask, updateTask} = useTasks();
 
   const router = useRouter();
+  const { register, handleSubmit, setValue, formState:{errors} } = useForm();
 
-  const handleChange = (e) => {
-    setTask({
-      ...task,
-      [e.target.name]: e.target.value
-    })
-  }
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const onSubmit = handleSubmit( (data) => {
     if (params.id) {
-      updateTask(params.id, task);
+      updateTask(params.id, data);
+      toast.success('Task updated successfully');
     } else {
-      createTask(task.title, task.description);
+      createTask(data.title, data.description);
+      toast.success('New task created successfully');
     }
     router.push('/');
-  }
+  })
 
   useEffect(() => {
     if (params.id) {
       const taskFound = tasks.find((task) => task.id === params.id);
       if (taskFound) {
-        setTask({
-          title:taskFound.title,
-          description:taskFound.description
-        });
+        setValue('title', taskFound.title);
+        setValue('description', taskFound.description);
       }
-    }
+      }
   }, [])
   
   
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={onSubmit}>
       <input
         type="text"
-        name="title"
         placeholder="Write a title"
-        onChange={e => handleChange(e)}
-        value={task.title}
+        { ...register("title", {required: true}) }
       />
+      {errors.title && <span>This field is required</span>}
+
       <textarea
-        name="description"
         placeholder="Write a description"
-        onChange={e => handleChange(e)}
-        value={task.description}
+        { ...register("description", {required: true})}
       />
+      {errors.description && <span>This field is required</span>}
+
       <button>Save</button>
     </form>
   )

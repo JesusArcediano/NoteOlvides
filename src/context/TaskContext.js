@@ -1,5 +1,6 @@
 "use client"
-import { createContext, useContext, useEffect, useState } from "react";
+import { useLocalStorage } from "@/hooks/useLocalStorage";
+import { createContext, useContext } from "react";
 import {v4 as uuid} from 'uuid';
 
 export const TaskContext = createContext();
@@ -12,17 +13,7 @@ export const useTasks = () => {
 
 export const TaskProvider = ({children}) => {
 
-    const [tasks, setTasks] = useState([]);
-
-    useEffect(() => {
-        const localData = localStorage.getItem('tasks');
-        return localData ? setTasks(JSON.parse(localData)) : [];
-    }, [])
-    
-    
-    useEffect(() => {
-      localStorage.setItem('tasks', JSON.stringify(tasks))
-    }, [tasks])
+    const [ tasks, setTasks ] = useLocalStorage('tasks', []);
     
 
     const createTask = (title, description) => {
