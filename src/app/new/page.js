@@ -18,10 +18,10 @@ const Page = ({params}) => {
   const onSubmit = handleSubmit( (data) => {
     if (params.id) {
       updateTask(params.id, data);
-      toast.success('Task updated successfully');
+      toast.success('¡Tarea actualizada exitósamente!');
     } else {
       createTask(data.title, data.description);
-      toast.success('New task created successfully');
+      toast.success('¡Nueva tarea creada exitósamente!');
     }
     router.push('/');
   })
@@ -46,26 +46,26 @@ const Page = ({params}) => {
         <input
           className={styles.input}
           type="text"
-          placeholder="Write a title"
+          placeholder="Escribe aquí el título"
           { ...register("title", {required: true}) }
           />
-        {errors.title && <span className={styles.input_span}>This field is required</span>}
+        {errors.title && <span className={styles.input_span}>Este campo es requerido.</span>}
       </div>
 
       <div className={styles.field}>
         <textarea
           className={styles.textarea}
-          placeholder="Write a description"
+          placeholder="Escribe aquí la descripción"
           { ...register("description", {required: true})}
           />
-        {errors.description && <span className={styles.textarea_span}>This field is required</span>}
+        {errors.description && <span className={styles.textarea_span}>Este campo es requerido.</span>}
         {<span className={styles.span}></span>}
       </div>
 
       <button
         className={styles.button}
       >
-        Save
+        Guardar
       </button>
     </form>
   )

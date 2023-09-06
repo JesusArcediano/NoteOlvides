@@ -11,15 +11,15 @@ export const Navbar = () => {
   return (
     <header className={styles.header}>
         <Link href="/">
-            <h1>Task App</h1>
-            <h3>{tasks.length} tasks</h3>
+            <h1>NoteOlvides</h1>
+            <h3>{tasks.length} tareas</h3>
         </Link>
         {/* <div> */}
             <button
                 onClick={() => {router.push('/new')}}
                 className={styles.button_addTask}
             >
-                Add Task
+                Añadir tarea
             </button>
         {/* </div> */}
     </header>

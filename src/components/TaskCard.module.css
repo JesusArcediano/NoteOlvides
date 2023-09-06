@@ -1,6 +1,9 @@
 .taskCard {
-    background: #313a48;
+    background: black;
+    /* background: #212421; */
     color: white;
+    border: 2px solid #fabd03;
+    border-radius: 8px;
 }
 
 .taskCard {
@@ -8,7 +11,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    margin: 0.5rem 2rem;
+    margin: 0.8rem 2rem;
 }
 
 .taskCard:first-of-type {
@@ -63,8 +66,20 @@
 
 .taskCard__buttons {
     margin-right: 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
 }
 
 .taskCard__buttons button {
     margin-left: 0.5rem;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+}
+
+.taskCard__buttons button:hover {
+    cursor: pointer;
 }

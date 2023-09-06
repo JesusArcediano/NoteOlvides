@@ -1,4 +1,8 @@
 .body {
-    background: #101826;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background: #212421;
+    /* background: #000000; */
+    /* background: #002d35; */
+    /* background: #101826; */
     margin: 0;
 }

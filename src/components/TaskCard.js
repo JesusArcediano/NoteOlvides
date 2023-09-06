@@ -13,7 +13,6 @@ export const TaskCard = ({ task }) => {
   return (
     <div
         className={styles.taskCard}
-        onClick={() => {router.push(`/edit/${task.id}`)}}
     >
       <div className={styles.taskCard__info}>
         <h1>{task.title}</h1>
@@ -24,19 +23,20 @@ export const TaskCard = ({ task }) => {
           className={styles.taskCard__buttons__delete}
           onClick={(e) => {
             e.stopPropagation();
-            const accept = confirm("Are you sure you want to delete this task?");
+            const accept = confirm("¿Estás seguro de que quieres eliminar esta tarea?");
             if (accept) {
-              deleteTask(task.id)}
-              toast.success('Task deleted successfully');
+              deleteTask(task.id);
+              toast.success('¡Tarea eliminada exitósamente!', {icon: ('🗑️')});
             }
-          }
+          }}
           >
-            <Image className={styles.image} src={'/images/delete.svg'} alt="Delete Icon" width={30} height={30}/>
+            <Image className={styles.image} src={'/images/delete.svg'} alt="Delete Icon" width={40} height={38} />
         </button>
         <button
           className={styles.taskCard__buttons__edit}
+          onClick={() => {router.push(`/edit/${task.id}`)}}
         >
-          <Image className={styles.image} src={'/images/edit.svg'} alt="Edit Icon" width={30} height={30}/>
+          <Image className={styles.image} src={'/images/edit.svg'} alt="Edit Icon" width={40} height={40} />
         </button>
       </div>
     </div>
